@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="Ứng dụng thiện nguyện Hội Việt Tộc - Đồng hành cùng hơn 100 buôn làng Tây Nguyên">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hội Việt Tộc">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Hội Việt Tộc - Nhịp Cầu Yêu Thương</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #F7F5F0;
+      touch-action: pan-y;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    #loading-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #F7F5F0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      z-index: 9999;
+      pointer-events: none;
+      transition: opacity 0.35s ease-out;
+    }
+    .spinner {
+      border: 3.5px solid #EBE5D9;
+      border-top: 3.5px solid #B84A27;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 14px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="loading-indicator">
+    <div class="spinner"></div>
+    <div style="font-weight: 700; font-size: 17px; color: #234234; letter-spacing: 0.3px;">HỘI VIỆT TỘC</div>
+    <div style="font-size: 13px; color: #5C524C; margin-top: 5px;">Đang tải ứng dụng...</div>
+  </div>
+
+  <script>
+    function removeLoader() {
+      var el = document.getElementById('loading-indicator');
+      if (el) {
+        el.style.opacity = '0';
+        setTimeout(function() {
+          if (el && el.parentNode) {
+            el.parentNode.removeChild(el);
+          }
+        }, 350);
+      }
+    }
+
+    window.addEventListener('flutter-first-frame', removeLoader);
+
+    var observer = new MutationObserver(function(mutations, obs) {
+      var flt = document.querySelector('flt-glass-pane') || document.querySelector('flutter-view');
+      if (flt) {
+        removeLoader();
+        obs.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    setTimeout(removeLoader, 3000);
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

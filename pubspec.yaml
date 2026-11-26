@@ -1,0 +1,40 @@
+name: viettoc_mobile
+description: "Hoi Viet Toc - Nhip Cau Yeu Thuong Native Mobile Application"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+
+  # Network & REST API
+  dio: ^5.4.3
+
+  # UI & Design System
+  cached_network_image: ^3.3.1
+  flutter_widget_from_html_core: ^0.15.2
+  font_awesome_flutter: ^10.7.0
+  google_fonts: ^6.2.1
+
+  # Utilities & Services
+  url_launcher: ^6.3.0
+  intl: ^0.19.0
+  shared_preferences: ^2.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
