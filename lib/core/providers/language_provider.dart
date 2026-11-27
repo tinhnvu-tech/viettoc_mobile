@@ -24,7 +24,7 @@ class AppStrings {
   static String tr(String key, AppLanguage lang) {
     final Map<String, Map<String, String>> dict = {
       'app_title': {
-        'vi': 'Hội Việt Tộc',
+        'vi': 'Việt Tộc',
         'en': 'Viet Toc Foundation',
       },
       'app_subtitle': {
