@@ -46,16 +46,25 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       appBar: AppBar(
         title: Row(
           children: [
-            Container(
-              padding: const EdgeInsets.all(6),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const FaIcon(
-                FontAwesomeIcons.handHoldingHeart,
-                color: ThoCamColors.pineGreen,
-                size: 16,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                'assets/images/logo.png',
+                width: 32,
+                height: 32,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => Container(
+                  width: 32,
+                  height: 32,
+                  color: Colors.white,
+                  child: const Center(
+                    child: FaIcon(
+                      FontAwesomeIcons.handHoldingHeart,
+                      color: ThoCamColors.pineGreen,
+                      size: 16,
+                    ),
+                  ),
+                ),
               ),
             ),
             const SizedBox(width: 10),

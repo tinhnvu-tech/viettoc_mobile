@@ -29,7 +29,7 @@ class PostRepository {
         ? ApiConstants.catActivitiesVi
         : ApiConstants.catActivitiesEn;
 
-    return _fetchPostsByCategoryId(catId, page: page, perPage: perPage);
+    return _fetchPostsByCategoryId(catId, language: language, page: page, perPage: perPage);
   }
 
   /// Tải danh sách Chia Sẻ Tâm Tình
@@ -42,7 +42,7 @@ class PostRepository {
         ? ApiConstants.catStoriesVi
         : ApiConstants.catStoriesEn;
 
-    return _fetchPostsByCategoryId(catId, page: page, perPage: perPage);
+    return _fetchPostsByCategoryId(catId, language: language, page: page, perPage: perPage);
   }
 
   /// Tải danh sách Tin Buôn Làng Mới Nhất
@@ -55,7 +55,7 @@ class PostRepository {
         ? ApiConstants.catNewsVi
         : ApiConstants.catNewsEn;
 
-    return _fetchPostsByCategoryId(catId, page: page, perPage: perPage);
+    return _fetchPostsByCategoryId(catId, language: language, page: page, perPage: perPage);
   }
 
   /// Lấy chi tiết một bài viết theo ID
@@ -71,24 +71,52 @@ class PostRepository {
     }
   }
 
+  static final RegExp _vietnameseDiacriticsRegex = RegExp(
+    r'[àáảãạăắằẳẵặâấầẩẫậèéẻẽẹêếềểễệìíỉĩịòóỏõọôốồổỗộơớờởỡợùúủũụưứừửữựỳýỷỹỵđĐ]',
+    caseSensitive: false,
+  );
+
+  static bool _hasVietnameseDiacritics(String text) {
+    return _vietnameseDiacriticsRegex.hasMatch(text);
+  }
+
   Future<List<PostModel>> _fetchPostsByCategoryId(
     int categoryId, {
+    required AppLanguage language,
     int page = 1,
     int perPage = 10,
   }) async {
     try {
+      // Yêu cầu thêm một số bài để phòng trường hợp lọc bớt bài sai ngôn ngữ
+      final fetchCount = (perPage * 1.5).ceil();
       final response = await _dio.get(
         'posts',
         queryParameters: {
           'categories': categoryId,
           'page': page,
-          'per_page': perPage,
+          'per_page': fetchCount,
           '_embed': 'true',
         },
       );
 
       final List rawList = response.data as List;
-      return rawList.map((item) => PostModel.fromJson(item as Map<String, dynamic>)).toList();
+      final posts = rawList
+          .map((item) => PostModel.fromJson(item as Map<String, dynamic>))
+          .toList();
+
+      // Kiểm soát cách ly ngôn ngữ tuyệt đối (Strict Language Separation)
+      List<PostModel> filtered;
+      if (language == AppLanguage.vi) {
+        filtered = posts.where((p) {
+          return _hasVietnameseDiacritics(p.title) || _hasVietnameseDiacritics(p.excerpt);
+        }).toList();
+      } else {
+        filtered = posts.where((p) {
+          return !_hasVietnameseDiacritics(p.title);
+        }).toList();
+      }
+
+      return filtered.take(perPage).toList();
     } catch (e) {
       throw Exception('Lỗi kết nối REST API cho Category $categoryId: $e');
     }

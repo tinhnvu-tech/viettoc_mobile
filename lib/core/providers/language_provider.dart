@@ -29,7 +29,7 @@ class AppStrings {
       },
       'app_subtitle': {
         'vi': 'Nhịp Cầu Yêu Thương',
-        'en': 'Bridge of Love',
+        'en': 'Links of Love',
       },
       'nav_home': {
         'vi': 'Trang Nhà',
@@ -116,12 +116,40 @@ class AppStrings {
         'en': 'Copy Zelle Number',
       },
       'zelle_copied': {
-        'vi': 'Đã sao chép số Zelle 904-476-5761 (VIET TOC FOUNDATION INC)',
-        'en': 'Copied Zelle 904-476-5761 (VIET TOC FOUNDATION INC)',
+        'vi': 'Đã sao chép số Zelle 904-476-5761 (Viet Toc Foundation Inc)',
+        'en': 'Copied Zelle 904-476-5761 (Viet Toc Foundation Inc)',
+      },
+      'check_title': {
+        'vi': 'Ngân Phiếu (Check / Money Order)',
+        'en': 'Check / Money Order',
+      },
+      'check_payable_to': {
+        'vi': 'Đơn vị thụ hưởng:',
+        'en': 'Payable to:',
+      },
+      'check_mailing_address': {
+        'vi': 'Địa chỉ nhận thư:',
+        'en': 'Mailing address:',
+      },
+      'memo_label': {
+        'vi': 'Ghi chú (Memo):',
+        'en': 'Memo:',
+      },
+      'memo_content': {
+        'vi': 'Giúp đồng bào buôn làng Tây Nguyên',
+        'en': 'Highland Village Relief',
+      },
+      'copy_address': {
+        'vi': 'Sao Chép Địa Chỉ',
+        'en': 'Copy Address',
+      },
+      'address_copied': {
+        'vi': 'Đã sao chép địa chỉ nhận ngân phiếu',
+        'en': 'Copied donation mailing address',
       },
       'check_guidance': {
-        'vi': 'Gửi ngân phiếu (Check / Money Order) về:\nVIET TOC FOUNDATION INC\nP.O. Box 10061, Silver Spring, MD 20914',
-        'en': 'Send check or money order payable to:\nVIET TOC FOUNDATION INC\nP.O. Box 10061, Silver Spring, MD 20914',
+        'vi': 'Gửi ngân phiếu (Check / Money Order) về:\nViet Toc Foundation Inc\nP.O. Box 10061, Silver Spring, MD 20914',
+        'en': 'Send check or money order payable to:\nViet Toc Foundation Inc\nP.O. Box 10061, Silver Spring, MD 20914',
       },
       'read_more': {
         'vi': 'Xem chi tiết',

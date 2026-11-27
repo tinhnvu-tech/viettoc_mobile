@@ -100,17 +100,17 @@ class HomeScreen extends ConsumerWidget {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: ThoCamColors.pineGreen,
+        color: ThoCamColors.terracotta,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
       ),
-      padding: const EdgeInsets.fromLTRB(20, 20, 20, 28),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 26),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             decoration: BoxDecoration(
-              color: ThoCamColors.terracotta,
+              color: ThoCamColors.pineGreen,
               borderRadius: BorderRadius.circular(6),
             ),
             child: const Text(
@@ -124,22 +124,30 @@ class HomeScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 12),
-          Text(
-            AppStrings.tr('hero_title', lang),
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w800,
-              color: Colors.white,
-              height: 1.25,
+          SizedBox(
+            width: double.infinity,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: Text(
+                AppStrings.tr('hero_title', lang),
+                maxLines: 1,
+                style: const TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w800,
+                  color: Colors.white,
+                  letterSpacing: -0.2,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 8),
           Text(
             AppStrings.tr('hero_desc', lang),
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 13,
               color: ThoCamColors.sand,
-              height: 1.5,
+              height: 1.4,
             ),
           ),
         ],

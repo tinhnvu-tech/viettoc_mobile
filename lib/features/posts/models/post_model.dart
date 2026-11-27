@@ -72,17 +72,55 @@ class PostModel {
   }
 
   static String _cleanHtml(String htmlString) {
-    return htmlString
-        .replaceAll(RegExp(r'<[^>]*>'), '')
-        .replaceAll('&nbsp;', ' ')
-        .replaceAll('&#8211;', '-')
-        .replaceAll('&#8212;', '--')
-        .replaceAll('&#8216;', "'")
-        .replaceAll('&#8217;', "'")
-        .replaceAll('&#8220;', '"')
-        .replaceAll('&#8221;', '"')
-        .replaceAll('&amp;', '&')
-        .replaceAll('&quot;', '"')
-        .trim();
+    if (htmlString.isEmpty) return '';
+
+    // First strip all HTML tags
+    String text = htmlString.replaceAll(RegExp(r'<[^>]*>'), '');
+
+    // Common named entities
+    final Map<String, String> namedEntities = {
+      '&nbsp;': ' ',
+      '&amp;': '&',
+      '&quot;': '"',
+      '&apos;': "'",
+      '&lt;': '<',
+      '&gt;': '>',
+      '&hellip;': '...',
+      '&mdash;': '—',
+      '&ndash;': '–',
+      '&#8211;': '–',
+      '&#8212;': '—',
+      '&#8216;': "'",
+      '&#8217;': "'",
+      '&#8220;': '"',
+      '&#8221;': '"',
+      '&#8230;': '...',
+    };
+    namedEntities.forEach((key, val) {
+      text = text.replaceAll(key, val);
+    });
+
+    // Decimal numeric entities (e.g., &#038;, &#38;, &#039;)
+    text = text.replaceAllMapped(RegExp(r'&#(\d+);'), (match) {
+      final code = int.tryParse(match.group(1)!);
+      if (code != null && code > 0) {
+        return String.fromCharCode(code);
+      }
+      return match.group(0)!;
+    });
+
+    // Hexadecimal numeric entities (e.g., &#x26;)
+    text = text.replaceAllMapped(RegExp(r'&#x([0-9a-fA-F]+);'), (match) {
+      final code = int.tryParse(match.group(1)!, radix: 16);
+      if (code != null && code > 0) {
+        return String.fromCharCode(code);
+      }
+      return match.group(0)!;
+    });
+
+    // Direct fix for unclosed HTML numeric ampersands
+    text = text.replaceAll('&#038', '&').replaceAll('&#38', '&');
+
+    return text.replaceAll(RegExp(r'\s+'), ' ').trim();
   }
 }
