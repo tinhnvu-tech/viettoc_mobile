@@ -230,14 +230,16 @@ class DonationScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 10),
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              width: double.infinity,
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: ThoCamColors.sand,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: const Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     ApiConstants.zellePhone,
                     style: TextStyle(
                       fontSize: 18,
@@ -246,13 +248,24 @@ class DonationScreen extends ConsumerWidget {
                       letterSpacing: 0.5,
                     ),
                   ),
-                  Spacer(),
-                  Text(
-                    ApiConstants.zelleAccountName,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
-                      color: ThoCamColors.roast,
+                  const SizedBox(height: 6),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: ThoCamColors.border),
+                    ),
+                    child: Text(
+                      lang == AppLanguage.vi
+                          ? 'Tên tài khoản: ${ApiConstants.zelleAccountName}'
+                          : 'Account name: ${ApiConstants.zelleAccountName}',
+                      style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: ThoCamColors.roast,
+                      ),
                     ),
                   ),
                 ],
@@ -306,6 +319,7 @@ class DonationScreen extends ConsumerWidget {
             ),
             const SizedBox(height: 12),
             Container(
+              width: double.infinity,
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: ThoCamColors.sand,
@@ -314,54 +328,58 @@ class DonationScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.tr('check_payable_to', lang),
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: ThoCamColors.textMuted,
-                          fontWeight: FontWeight.w600,
-                        ),
+                  Text(
+                    AppStrings.tr('check_payable_to', lang),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: ThoCamColors.textMuted,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: ThoCamColors.border),
+                    ),
+                    child: const Text(
+                      'Viet Toc Foundation Inc',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w800,
+                        color: ThoCamColors.pineGreen,
                       ),
-                      const SizedBox(width: 6),
-                      const Expanded(
-                        child: Text(
-                          'Viet Toc Foundation Inc',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w800,
-                            color: ThoCamColors.pineGreen,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                   const SizedBox(height: 8),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.tr('check_mailing_address', lang),
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: ThoCamColors.textMuted,
-                          fontWeight: FontWeight.w600,
-                        ),
+                  Text(
+                    AppStrings.tr('check_mailing_address', lang),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: ThoCamColors.textMuted,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(color: ThoCamColors.border),
+                    ),
+                    child: const Text(
+                      'P.O. Box 10061, Silver Spring, MD 20914',
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                        color: ThoCamColors.roast,
                       ),
-                      const SizedBox(width: 6),
-                      const Expanded(
-                        child: Text(
-                          'P.O. Box 10061, Silver Spring, MD 20914',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w700,
-                            color: ThoCamColors.roast,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
               ),

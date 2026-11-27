@@ -100,7 +100,7 @@ class HomeScreen extends ConsumerWidget {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: ThoCamColors.terracotta,
+        color: ThoCamColors.ochre,
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
       ),
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 26),
@@ -135,7 +135,7 @@ class HomeScreen extends ConsumerWidget {
                 style: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.w800,
-                  color: Colors.white,
+                  color: ThoCamColors.roast,
                   letterSpacing: -0.2,
                 ),
               ),
@@ -146,7 +146,8 @@ class HomeScreen extends ConsumerWidget {
             AppStrings.tr('hero_desc', lang),
             style: const TextStyle(
               fontSize: 13,
-              color: ThoCamColors.sand,
+              color: Color(0xFF382B1E),
+              fontWeight: FontWeight.w600,
               height: 1.4,
             ),
           ),

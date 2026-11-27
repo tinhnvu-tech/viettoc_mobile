@@ -120,7 +120,7 @@ class AppStrings {
         'en': 'Copied Zelle 904-476-5761 (Viet Toc Foundation Inc)',
       },
       'check_title': {
-        'vi': 'Ngân Phiếu (Check / Money Order)',
+        'vi': 'Ngân Phiếu',
         'en': 'Check / Money Order',
       },
       'check_payable_to': {
@@ -148,7 +148,7 @@ class AppStrings {
         'en': 'Copied donation mailing address',
       },
       'check_guidance': {
-        'vi': 'Gửi ngân phiếu (Check / Money Order) về:\nViet Toc Foundation Inc\nP.O. Box 10061, Silver Spring, MD 20914',
+        'vi': 'Gửi ngân phiếu về:\nViet Toc Foundation Inc\nP.O. Box 10061, Silver Spring, MD 20914',
         'en': 'Send check or money order payable to:\nViet Toc Foundation Inc\nP.O. Box 10061, Silver Spring, MD 20914',
       },
       'read_more': {
